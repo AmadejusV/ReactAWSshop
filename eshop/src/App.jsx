@@ -1,10 +1,13 @@
-
+import Navbar from "./nav-bar/Navbar.jsx";
 
 function App() {
   return (
-    <div className="bg-indigo-300">
-      My app assignment
-    </div>
+    <>
+      <header></header>
+      <main>
+        <Navbar />
+      </main>
+    </>
   );
 }
 
