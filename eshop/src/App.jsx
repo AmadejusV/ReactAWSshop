@@ -1,13 +1,25 @@
 import Navbar from "./nav-bar/Navbar.jsx";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Products from "./products/Products.jsx";
+import Vision from "./vision/Vision.jsx";
 
 function App() {
   return (
-    <>
-      <header></header>
-      <main>
+    <Router>
+      <header>
         <Navbar />
+      </header>
+      <main>
+        <Switch>
+          <Route path="/vision">
+            <Vision />
+          </Route>
+          <Route path="/">
+            <Products />
+          </Route>
+        </Switch>
       </main>
-    </>
+    </Router>
   );
 }
 
