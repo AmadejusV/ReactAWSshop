@@ -1,5 +1,11 @@
+import Counter from "../common/Counter";
+
 function Products() {
-  return <div>Products</div>;
+  return (
+    <div>
+      <Counter></Counter>
+    </div>
+  );
 }
 
 export default Products;
