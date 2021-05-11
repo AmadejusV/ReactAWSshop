@@ -1,15 +1,18 @@
 import { Link } from "react-router-dom";
+import NavItem from "./components/NavItem";
+
+const navItems = [
+  { text: "PRODUCTS", route: "/" },
+  { text: "VISION", route: "/vision" },
+];
 
 function Navbar() {
   return (
     <nav className="bg-blue-300">
       <ul className="flex">
-        <li className="p-2 font-semi text-2xl hover:text-white">
-          <Link to="/">Products</Link>
-        </li>
-        <li className="p-2 font-semi text-2xl hover:text-white">
-          <Link to="/vision">Vision</Link>
-        </li>
+        {navItems.map((nItem) => (
+          <NavItem {...nItem}></NavItem>
+        ))}
       </ul>
     </nav>
   );
