@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 
 function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(() => {
+    return 0;
+  });
 
   const increment = () => {
-    setCount(count + 1);
+    setCount((prevCount) => prevCount + 1);
   };
 
   const decrement = () => {
-    setCount(count - 1);
+    setCount((prevCount) => prevCount - 1);
+  };
+
+  const userInputHandler = (event) => {
+    setCount(parseInt(event.target.value));
   };
 
   return (
     <div>
       <button onClick={decrement}>-</button>
-      <input value={count}></input>
+      <input onChange={userInputHandler} value={count}></input>
       <button onClick={increment}>+</button>
     </div>
   );
