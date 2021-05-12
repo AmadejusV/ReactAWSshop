@@ -1,10 +1,27 @@
 
+import Navbar from "./nav-bar/Navbar.jsx";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Products from "./products/Products.jsx";
+import Vision from "./vision/Vision.jsx";
 
 function App() {
   return (
-    <div className="bg-indigo-300">
-      My app assignment
-    </div>
+    <Router>
+      <header>
+        <Navbar />
+      </header>
+      <main className="p-2">
+        <Switch>
+          <Route path="/vision">
+            <Vision />
+          </Route>
+          <Route path="/">
+            <Products />
+          </Route>
+        </Switch>
+      </main>
+    </Router>
+
   );
 }
 
