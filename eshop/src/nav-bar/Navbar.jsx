@@ -11,7 +11,7 @@ function Navbar() {
     <nav className="bg-blue-300">
       <ul className="flex">
         {navItems.map((nItem) => (
-          <NavItem {...nItem}></NavItem>
+          <NavItem key={nItem.route} {...nItem}></NavItem>
         ))}
       </ul>
     </nav>
