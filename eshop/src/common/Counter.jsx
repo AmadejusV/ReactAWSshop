@@ -14,13 +14,19 @@ function Counter() {
   };
 
   const userInputHandler = (event) => {
-    setCount(parseInt(event.target.value));
+    const val = event.target.value;
+
+    if (!val) {
+      setCount(1);
+      return;
+    }
+    setCount(parseInt(val));
   };
 
   return (
     <div>
       <button onClick={decrement}>-</button>
-      <input onChange={userInputHandler} value={count}></input>
+      <input type="number" onChange={userInputHandler} value={count}></input>
       <button onClick={increment}>+</button>
     </div>
   );
