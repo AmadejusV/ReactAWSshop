@@ -1,8 +1,11 @@
+
 import Navbar from "./nav-bar/Navbar.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Products from "./products/Products.jsx";
 import Vision from "./vision/Vision.jsx";
+
 import ProductPage from "./product-page/ProductPage.jsx";
+
 
 function App() {
   return (
@@ -12,6 +15,7 @@ function App() {
       </header>
       <main className="p-2">
         <Switch>
+
           <Route exact path="/vision">
             <Vision />
           </Route>
@@ -25,6 +29,7 @@ function App() {
         </Switch>
       </main>
     </Router>
+
   );
 }
 

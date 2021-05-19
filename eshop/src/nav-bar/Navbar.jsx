@@ -1,3 +1,4 @@
+
 import NavItem from "./components/NavItem";
 
 const navItems = [
