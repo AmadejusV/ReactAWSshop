@@ -25,6 +25,7 @@ function Counter() {
       return;
     }
     setCount(parseInt(val));
+
   };
 
   return (
