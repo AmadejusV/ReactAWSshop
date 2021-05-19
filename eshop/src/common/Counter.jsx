@@ -6,6 +6,10 @@ function Counter() {
   });
 
   const increment = () => {
+    if (count === "") {
+      setCount(1);
+      return;
+    }
     setCount((prevCount) => prevCount + 1);
   };
 
@@ -17,7 +21,7 @@ function Counter() {
     const val = event.target.value;
 
     if (!val) {
-      setCount(1);
+      setCount(val);
       return;
     }
     setCount(parseInt(val));
