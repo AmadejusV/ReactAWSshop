@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-function Product({ image, title, price, url }) {
+function Product({ image, title, price, id }) {
   return (
     <li className="p-4">
       <div className="bg-white border shadow-sm rounded w-64 h-80 p-2">
@@ -14,7 +15,9 @@ function Product({ image, title, price, url }) {
         >
           {title}
         </div>
-        <button>View</button>
+        <div>
+          <Link to={`products/${id}`}>View</Link>
+        </div>
       </div>
     </li>
   );
