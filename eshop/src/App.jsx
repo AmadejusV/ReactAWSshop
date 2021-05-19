@@ -2,7 +2,7 @@ import Navbar from "./nav-bar/Navbar.jsx";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Products from "./products/Products.jsx";
 import Vision from "./vision/Vision.jsx";
-import ProductPage from "./product-page/ProductPage.jsx";
+import ProductPage from "./products/components/product-page/ProductPage.jsx";
 
 function App() {
   return (
