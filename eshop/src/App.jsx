@@ -15,7 +15,7 @@ function App() {
           <Route exact path="/vision">
             <Vision />
           </Route>
-          <Route exact path="/">
+          <Route exact path={["/", "/products"]}>
             <Products />
           </Route>
           <Route path="/products/:productId">
