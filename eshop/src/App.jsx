@@ -12,15 +12,9 @@ function App() {
       </header>
       <main className="p-2">
         <Switch>
-          <Route exact path="/vision">
-            <Vision />
-          </Route>
-          <Route exact path={["/", "/products"]}>
-            <Products />
-          </Route>
-          <Route path="/products/:productId">
-            <ProductPage />
-          </Route>
+          <Route exact path="/vision" component={Vision} />
+          <Route exact path={["/", "/products"]} component={Products} />
+          <Route path="/products/:productId" component={ProductPage} />
           <Route path="/" render={() => <div>404 bad url?</div>} />
         </Switch>
       </main>

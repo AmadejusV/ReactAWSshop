@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 const defaultClasses = "bg-white border shadow-sm p-2";
 
-function ProductCard({ className, children, isRounded }) {
+function Card({ className, children, isRounded }) {
   return (
     <div className={clsx(defaultClasses, className, isRounded && "rounded")}>
       {children}
@@ -11,4 +11,4 @@ function ProductCard({ className, children, isRounded }) {
   );
 }
 
-export default ProductCard;
+export default Card;
