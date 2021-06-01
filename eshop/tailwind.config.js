@@ -9,6 +9,9 @@ module.exports = {
         "1/2": "50%",
         "3/4": "75%",
       },
+      maxWidth: {
+        "1/2": "50%",
+      },
     },
   },
   variants: {
@@ -16,4 +19,3 @@ module.exports = {
   },
   plugins: [],
 };
-
