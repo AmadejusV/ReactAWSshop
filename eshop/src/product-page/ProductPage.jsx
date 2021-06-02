@@ -31,7 +31,7 @@ function ProductPage() {
         <p className="mb-4">{product?.description}</p>
         <div className="mb-2 font-semibold">Quantity</div>
         <Counter />
-        <Button>Add to cart</Button>
+        <Button className="ml-2">Add to cart</Button>
       </div>
     </div>
   );
