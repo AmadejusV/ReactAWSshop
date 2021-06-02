@@ -29,16 +29,22 @@ function Counter() {
 
   return (
     <div className="border-blue-300 border-2 inline-block mr-2">
-      <button className="bg-white w-6 text-blue-200" onClick={decrement}>
+      <button
+        className="bg-white w-6 text-blue-200 focus:outline-none"
+        onClick={decrement}
+      >
         -
       </button>
       <input
-        className="appearance-none w-8 text-center"
+        className="appearance-none w-8 text-center focus:outline-none"
         type="number"
         onChange={userInputHandler}
         value={count}
       ></input>
-      <button className="bg-white w-6 text-blue-200" onClick={increment}>
+      <button
+        className="bg-white w-6 text-blue-200 focus:outline-none"
+        onClick={increment}
+      >
         +
       </button>
     </div>
