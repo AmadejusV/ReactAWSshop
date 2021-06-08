@@ -11,7 +11,7 @@ function Counter() {
   });
 
   const increment = () => {
-    if (count === "") {
+    if (count < 1 || count === "") {
       setCount(1);
       return;
     }
@@ -19,6 +19,10 @@ function Counter() {
   };
 
   const decrement = () => {
+    if (count < 1 || count === "") {
+      setCount(0);
+      return;
+    }
     setCount((prevCount) => prevCount - 1);
   };
 
