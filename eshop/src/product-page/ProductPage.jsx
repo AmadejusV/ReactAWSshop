@@ -5,7 +5,9 @@ import { getProduct } from "../common/requests";
 import Card from "../common/components/Card";
 import Counter from "../common/components/Counter";
 import Button from "../common/components/Button";
+
 import Spinner from "../common/components/Spinner";
+
 
 function ProductPage() {
   const { productId } = useParams();
