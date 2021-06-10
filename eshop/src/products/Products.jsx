@@ -13,7 +13,6 @@ function Products() {
       setIsLoading(true);
       const { data } = await axios(getProducts);
 
-      console.log(`loading? ${isLoading}`);
       setIsLoading(false);
       setProducts(data);
     };
@@ -22,7 +21,7 @@ function Products() {
   }, []);
 
   if (isLoading) {
-    return <Spinner text="Fetching products..." />;
+    return <Spinner text={`Fetching products`} />;
   }
 
   return (

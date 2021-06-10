@@ -23,7 +23,7 @@ function ProductPage() {
   }, [productId]);
 
   if (isLoading) {
-    return <Spinner text="Fetching product info..." />;
+    return <Spinner text="Fetching product info" />;
   }
 
   return (
