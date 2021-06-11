@@ -3,49 +3,15 @@ import { ReactComponent as SpinIcon } from "../assets/spin.svg";
 
 function Spinner({ text = "Loading..." }) {
   const [dots, setDots] = useState("");
-  const [loadingDotCount, setLoadingDotCount] = useState(() => {
-    return 0;
-  });
-
-  function changeDotCount() {
-    setLoadingDotCount((prevState) => (prevState === 3 ? 0 : prevState + 1));
-  }
-
-  function incrementLoadingDots() {
-    setInterval(changeDotCount, 700);
-    // console.log("sat interval");
-  }
-
-  function changeDotText() {
-    switch (loadingDotCount) {
-      case 0:
-        setDots("");
-        break;
-      case 1:
-        setDots(".");
-        break;
-      case 2:
-        setDots("..");
-        break;
-      case 3:
-        setDots("...");
-        break;
-      default:
-        break;
-    }
-  }
 
   useEffect(() => {
-    changeDotText();
-    console.log(loadingDotCount);
-  }, [loadingDotCount]);
+    const incrementingTimer = setInterval(() => {
+      setDots((prevState) => (prevState.length >= 3 ? "" : prevState + "."));
+    }, 700);
 
-  useEffect(() => {
-    const incrementingTimer = incrementLoadingDots();
-
-    console.log(loadingDotCount);
+    console.log(dots);
     return () => clearInterval(incrementingTimer);
-  }, []);
+  }, [dots]);
 
   return (
     <div className="h-full flex flex-col justify-center items-center">
