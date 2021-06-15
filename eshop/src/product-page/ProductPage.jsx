@@ -57,7 +57,7 @@ function ProductPage() {
           className="ml-2 focus:outline-none"
           disabled={isAddToCartLoading}
         >
-          Add to cart
+          {isAddToCartLoading ? "ADDING TO CART" : "ADD TO CART"}
         </Button>
       </div>
     </div>
