@@ -7,20 +7,37 @@ const typeClassMap = {
   default: "text-blue-400 hover:bg-gray-50",
   primary: "text-white bg-blue-400",
 };
+const disabledClasses = "bg-gray-300 cursor-default text-gray-400";
 
-function Button({ type = "default", className, children, to, onClick }) {
-  const mergedClasses = clsx(initialClasses, typeClassMap[type], className);
+function Button({
+  type = "default",
+  className,
+  children,
+  to,
+  onClick,
+  disabled,
+}) {
+  const mergedClasses = clsx(
+    initialClasses,
+    disabled ? disabledClasses : typeClassMap[type],
+    className
+  );
 
   if (to) {
     return (
-      <Link to={to} className={mergedClasses} onClick={onClick}>
+      <Link
+        to={to}
+        className={mergedClasses}
+        disabled={disabled}
+        onClick={onClick}
+      >
         {children}
       </Link>
     );
   }
 
   return (
-    <button className={mergedClasses} onClick={onClick}>
+    <button className={mergedClasses} disabled={disabled} onClick={onClick}>
       {children}
     </button>
   );
