@@ -5,7 +5,7 @@ const buttonClass = "bg-white w-6 p-2 text-blue-200 focus:outline-none ";
 const btnGerulisStyle =
   "font-bold transform scale-125 duration-200 hover:translate-y-0.5 active:translate-y-0.5";
 
-function Counter() {
+function Counter({ className }) {
   const [count, setCount] = useState(() => {
     return 0;
   });
@@ -37,7 +37,7 @@ function Counter() {
   };
 
   return (
-    <div className="border-blue-300 border-2 inline-block mr-2">
+    <div className={`border-blue-300 border-2 inline-block mr-2 ${className}`}>
       <Button className={buttonClass} onClick={decrement}>
         -
       </Button>

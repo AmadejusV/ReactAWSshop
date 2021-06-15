@@ -2,10 +2,14 @@ import clsx from "clsx";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const defaultClasses = "text-blue-400 hover:bg-gray-50 p-1";
+const initialClasses = "p-1 focus:outline-none rounded font-semibold";
+const typeClassMap = {
+  default: "text-blue-400 hover:bg-gray-50",
+  primary: "text-white bg-blue-400",
+};
 
-function Button({ className, children, to, onClick }) {
-  const mergedClasses = clsx(defaultClasses, className);
+function Button({ type = "default", className, children, to, onClick }) {
+  const mergedClasses = clsx(initialClasses, typeClassMap[type], className);
 
   if (to) {
     return (

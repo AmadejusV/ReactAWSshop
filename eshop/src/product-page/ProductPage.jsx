@@ -39,8 +39,11 @@ function ProductPage() {
         <div className="text-3xl mb-4 font-bold">${product?.price}</div>
         <p className="mb-4">{product?.description}</p>
         <div className="mb-2 font-semibold">Quantity</div>
-        <Counter />
-        <Button className="ml-2 focus:outline-none">Add to cart</Button>
+        <Counter className="mb-4" />
+
+        <Button type="primary" className="ml-2 focus:outline-none">
+          Add to cart
+        </Button>
       </div>
     </div>
   );
