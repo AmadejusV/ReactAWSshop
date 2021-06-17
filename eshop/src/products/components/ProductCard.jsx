@@ -17,7 +17,7 @@ function ProductCard({ id, image, title, price }) {
           <Button
             to={{
               pathname: `products/${id}`,
-              state: { image, title, price, id },
+              // state: { image, title, price, id } in case of needing to pass props to a linked component
             }}
           >
             View

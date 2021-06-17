@@ -2,11 +2,11 @@ import clsx from "clsx";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const initialClasses = "p-1 focus:outline-none rounded font-semibold";
 const typeClassMap = {
   default: "text-blue-400 hover:bg-gray-50",
-  primary: "text-white bg-blue-400",
+  primary: "text-white bg-blue-400 hover:bg-blue-500",
 };
+const initialClasses = "p-1 focus:outline-none rounded font-semibold";
 const disabledClasses = "bg-gray-300 cursor-default text-gray-400";
 
 function Button({
