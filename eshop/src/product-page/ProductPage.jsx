@@ -28,7 +28,7 @@ function ProductPage() {
 
   async function handleAddToCartClick() {
     setIsAddToCartLoading(true);
-    console.log("added to cart");
+    console.log(`adding ${counterProps.count} products to cart`);
     await axios(addToCart(product.id, counterProps.count));
     setIsAddToCartLoading(false);
   }
@@ -49,8 +49,8 @@ function ProductPage() {
         <div className="text-3xl mb-4 font-bold">${product?.price}</div>
         <p className="mb-4">{product?.description}</p>
         <div className="mb-2 font-semibold">Quantity</div>
-        <Counter className="mb-4" counterProps={counterProps} />
-
+        <Counter className="mb-4" {...counterProps} />{" "}
+        {/*passing in counterPross while destructuring them */}
         <Button
           onClick={handleAddToCartClick}
           type="primary"
