@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from "react";
+// import React, { useEffect, useState } from "react";
 import { ReactComponent as SpinIcon } from "../assets/spin.svg";
-
-const dotsIntervalInMs = 700;
+import useLoadingDots from "../hooks/useLoadingDots";
 
 function Spinner({ text = "Loading..." }) {
-  const [dots, setDots] = useState("");
-
-  useEffect(() => {
-    const incrementingTimer = setInterval(() => {
-      setDots((prevState) => (prevState.length >= 3 ? "" : prevState + "."));
-    }, dotsIntervalInMs);
-
-    console.log(dots);
-    return () => clearInterval(incrementingTimer);
-  }, []);
+  const { dots } = useLoadingDots();
 
   return (
     <div className="h-full flex flex-col justify-center items-center">

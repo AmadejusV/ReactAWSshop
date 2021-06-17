@@ -8,6 +8,7 @@ import Button from "../common/components/Button";
 
 import Spinner from "../common/components/Spinner";
 import useCounter from "../common/hooks/useCounter";
+import useLoadingDots from "../common/hooks/useLoadingDots";
 
 function ProductPage() {
   const { productId } = useParams();
@@ -15,6 +16,7 @@ function ProductPage() {
   const [isLoading, setIsLoading] = useState(false);
   const counterProps = useCounter();
   const [isAddToCartLoading, setIsAddToCartLoading] = useState(false);
+  const { dots } = useLoadingDots();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -57,7 +59,14 @@ function ProductPage() {
           className="ml-2 focus:outline-none"
           disabled={isAddToCartLoading}
         >
-          {isAddToCartLoading ? "ADDING TO CART" : "ADD TO CART"}
+          {isAddToCartLoading ? (
+            <p className="flex">
+              <span>ADDING TO CART</span>
+              <span className="w-3 text-left">{dots}</span>
+            </p>
+          ) : (
+            "ADD TO CART"
+          )}
         </Button>
       </div>
     </div>
