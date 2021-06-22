@@ -5,10 +5,6 @@ export const getProducts = {
   url: `${fakeStoreApiUrl}/products`,
 };
 
-// export function getProductES5(id) {
-//   return { method: "GET", url: `https://fakestoreapi.com/products/${id}` };
-// }
-
 export const getProduct = (id) => ({
   method: "GET",
   url: `${fakeStoreApiUrl}/products/${id}`,
