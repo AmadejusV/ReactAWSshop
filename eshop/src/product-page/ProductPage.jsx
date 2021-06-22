@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect} from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
 import { addToCart, getProduct } from "../common/requests";
 import Card from "../common/components/Card";
 import Counter from "../common/components/Counter";
@@ -8,33 +7,24 @@ import AddToCartButton from "./components/AddToCartButton";
 
 import Spinner from "../common/components/Spinner";
 import useCounter from "../common/hooks/useCounter";
-import useLoadingDots from "../common/hooks/useLoadingDots";
+import useApi from "../common/hooks/useApi";
 
 function ProductPage() {
   const { productId } = useParams();
-  const [product, setProduct] = useState();
-  const [isLoading, setIsLoading] = useState(false);
   const counterProps = useCounter();
-  const [isAddToCartLoading, setIsAddToCartLoading] = useState(false);
+  const {data: product, isLoading, call} = useApi();
+  const {isLoading: isAddToCartLoading, call: callAddToCart} = useApi();
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      setIsLoading(true);
-      const { data } = await axios(getProduct(productId));
-      setIsLoading(false);
-      setProduct(data);
-    };
-    fetchProduct();
-  }, [productId]);
+
+  useEffect(()=>{
+    call(getProduct(productId));
+  },[]) //eslint-disable-line
 
   async function handleAddToCartClick() {
-    setIsAddToCartLoading(true);
-    console.log(`adding ${counterProps.count} products to cart`);
-    await axios(addToCart(product.id, counterProps.count));
-    setIsAddToCartLoading(false);
+    callAddToCart(addToCart, counterProps.count);
   }
 
-  if (isLoading) {
+  if (isLoading || !product) {
     return <Spinner text="Fetching product info" />;
   }
 
@@ -42,7 +32,7 @@ function ProductPage() {
     <div className="flex m-auto px-2" style={{ maxWidth: 1000 }}>
       <div className="pr-4 max-w-1/2">
         <Card>
-          <img src={product?.image} alt={product?.image} />
+          <img src={product?.image} alt={product?.image} /> {/*eslint-disable-line*/}
         </Card>
       </div>
       <div className="pl-4 max-w-1/2">
@@ -51,7 +41,6 @@ function ProductPage() {
         <p className="mb-4">{product?.description}</p>
         <div className="mb-2 font-semibold">Quantity</div>
         <Counter className="mb-4" {...counterProps} />{" "}
-        {/*passing in counterPross while destructuring them */}
         <AddToCartButton isLoading={isAddToCartLoading} onClick={handleAddToCartClick} />
       </div>
     </div>

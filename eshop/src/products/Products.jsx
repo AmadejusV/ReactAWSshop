@@ -1,26 +1,19 @@
-import { useEffect, useState } from "react";
+import { useEffect,} from "react";
 import ProductCard from "./components/ProductCard.jsx";
-import axios from "axios";
 import { getProducts } from "../common/requests.js";
 import Spinner from "../common/components/Spinner.jsx";
+import useApi from "../common/hooks/useApi.jsx";
 
 function Products() {
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      setIsLoading(true);
-      const { data } = await axios(getProducts);
+  const {data: products, isLoading, call} = useApi();
 
-      setIsLoading(false);
-      setProducts(data);
-    };
+  useEffect(()=>{
+    console.log('calling products');
+    call(getProducts);
+  },[]); //eslint-disable-line
 
-    fetchProducts();
-  }, []);
-
-  if (isLoading) {
+  if (isLoading  || !products) {
     return <Spinner text={`Fetching products`} />;
   }
 
