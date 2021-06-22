@@ -4,7 +4,7 @@ import axios from "axios";
 import { addToCart, getProduct } from "../common/requests";
 import Card from "../common/components/Card";
 import Counter from "../common/components/Counter";
-import Button from "../common/components/Button";
+import AddToCartButton from "./components/AddToCartButton";
 
 import Spinner from "../common/components/Spinner";
 import useCounter from "../common/hooks/useCounter";
@@ -16,7 +16,6 @@ function ProductPage() {
   const [isLoading, setIsLoading] = useState(false);
   const counterProps = useCounter();
   const [isAddToCartLoading, setIsAddToCartLoading] = useState(false);
-  const { dots } = useLoadingDots();
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -53,21 +52,7 @@ function ProductPage() {
         <div className="mb-2 font-semibold">Quantity</div>
         <Counter className="mb-4" {...counterProps} />{" "}
         {/*passing in counterPross while destructuring them */}
-        <Button
-          onClick={handleAddToCartClick}
-          type="primary"
-          className="ml-2 focus:outline-none"
-          disabled={isAddToCartLoading}
-        >
-          {isAddToCartLoading ? (
-            <p className="flex">
-              <span>ADDING TO CART</span>
-              <span className="w-3 text-left">{dots}</span>
-            </p>
-          ) : (
-            "ADD TO CART"
-          )}
-        </Button>
+        <AddToCartButton isLoading={isAddToCartLoading} onClick={handleAddToCartClick} />
       </div>
     </div>
   );
