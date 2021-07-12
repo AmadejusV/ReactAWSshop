@@ -1,31 +1,32 @@
-import axios from 'axios';
-import { useState } from 'react'
-import { useHistory } from 'react-router-dom';
+import axios from "axios";
+import { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 const initialState = {
-    isLoading: false,
-    data: null
-}
+  isLoading: false,
+  data: null,
+};
 
 function useApi() {
-    const [state, setState] = useState(initialState);
-    const history = useHistory();
+  const [state, setState] = useState(initialState);
+  const history = useHistory();
 
-    async function call(request){
-        setState({data: null, isLoading: true});
+  async function call(request) {
+    setState({ data: null, isLoading: true });
 
-        try{
-            const {data} = await axios(request);
-            setState({data, isLoading: false})
-        } catch(e){
-            history.push('/error');
-            console.error(e);
-        }
+    try {
+      const { data } = await axios(request);
+      setState({ data, isLoading: false });
+    } catch (e) {
+      history.push("/error");
+      console.error(e);
     }
+  }
 
-    return {
-        ...state, call
-    }
+  return {
+    ...state,
+    call,
+  };
 }
 
-export default useApi
+export default useApi;
